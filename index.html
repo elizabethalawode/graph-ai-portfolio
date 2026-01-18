@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alawode Elizabeth Iyanuoluwa | AI Portfolio</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-body: #020502;       
+            --bg-nav: rgba(2, 5, 2, 0.9);    
+            --bg-card: #080d08;       
+            --bg-card-hover: #0c160c; 
+            
+            --border-subtle: rgba(74, 222, 128, 0.08);    
+            --border-strong: rgba(74, 222, 128, 0.2); 
+            
+            --primary: #4ade80;       /* Neon Green */
+            --primary-muted: rgba(74, 222, 128, 0.6);
+            --accent: #22c55e;        
+            
+            --text-main: #ffffff;     
+            --text-secondary: #94a3b8;
+            --text-muted: #475569;
+            
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-body); }
+        ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 10px; }
+
+        /* --- TOP NAVIGATION --- */
+        .navbar {
+            height: var(--header-height);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            background: var(--bg-nav);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-box {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-body);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .nav-logo-name {
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: 0.2s;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--primary);
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 100px 0;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-tag {
+            font-family: var(--font-mono);
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--primary);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+            -webkit-text-stroke: 1px var(--primary);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-body);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-strong);
+            color: var(--text-main);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- GRID DECORATION --- */
+        .circuit-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: -1;
+            background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* --- BENTO MODULES --- */
+        .section-label {
+            font-family: var(--font-mono);
+            color: var(--primary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            border-color: var(--primary-muted);
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+        }
+
+        .bento-card.wide { grid-column: span 8; }
+        .bento-card.narrow { grid-column: span 4; }
+        .bento-card.full { grid-column: span 12; }
+
+        .card-icon {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* --- EXPERIENCE TIMELINE --- */
+        .timeline {
+            margin-top: 2rem;
+        }
+
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: 0.3s;
+        }
+
+        .timeline-row:hover {
+            background: rgba(74, 222, 128, 0.02);
+        }
+
+        .time-period {
+            font-family: var(--font-mono);
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .role-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-name {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- GALLERY --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-item {
+            group-hover: scale(1.05);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: 0.3s;
+        }
+
+        .project-item:hover {
+            border-color: var(--primary);
+        }
+
+        .project-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--primary);
+            background: rgba(74, 222, 128, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo { font-weight: 800; font-size: 1.2rem; }
+        .copyright { color: var(--text-muted); font-size: 0.8rem; font-family: var(--font-mono); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .bento-card.wide, .bento-card.narrow { grid-column: span 12; }
+            .timeline-row { grid-template-columns: 1fr; gap: 1rem; }
+            .hero-title { font-size: 3.5rem; }
+            .navbar { padding: 0 1.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-logo">
+            <div class="logo-box">A</div>
+            <span class="nav-logo-name">ALAWODE E. I.</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#home" class="nav-item">System.init()</a>
+            <a href="#about" class="nav-item">Experience</a>
+            <a href="#course" class="nav-item">Curriculum</a>
+            <a href="#portfolio" class="nav-item">Projects</a>
+        </nav>
+    </header>
+
+    <div class="circuit-bg"></div>
+
+    <main class="container">
+        
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <span class="hero-tag">GENAI FELLOW 2024</span>
+            <h1 class="hero-title">Advancing <span>Research</span> through AI Automation.</h1>
+            <p class="hero-desc">
+                An educator's journey into the frontier of Generative AI. Bridging 9 years of pedagogical leadership with modern, no-code AI orchestration.
+            </p>
+            <div class="cta-group">
+                <a href="#portfolio" class="btn-primary">Explore Projects</a>
+                <a href="#about" class="btn-secondary">View Career</a>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="about">
+            <span class="section-label">01 // CAREER PATH</span>
+            <h2 class="section-title">Professional Evolution</h2>
+            
+            <div class="timeline">
+                <div class="timeline-row">
+                    <span class="time-period">2024 — NOW</span>
+                    <div class="timeline-content">
+                        <h3 class="role-title">Generative AI Fellow</h3>
+                        <span class="company-name">THE GRAPH COURSES</span>
+                        <p class="card-text">Pioneering the use of LLMs for automated literature reviews, research dissemination, and building agentic workflows for educational administration.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <span class="time-period">2015 — 2024</span>
+                    <div class="timeline-content">
+                        <h3 class="role-title">Lead Educator</h3>
+                        <span class="company-name">HIGHER HEIGHT COLLEGE</span>
+                        <p class="card-text">Orchestrated curriculum implementation for large-scale classrooms, specializing in social sciences and academic guidance. Mentored students through complex socio-emotional challenges.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <span class="time-period">2009 — 2014</span>
+                    <div class="timeline-content">
+                        <h3 class="role-title">B.Sc. Sociology</h3>
+                        <span class="company-name">UNIVERSITY OF IBADAN</span>
+                        <p class="card-text">Academic foundation in human behavior and social structures, providing the critical lens for ethical AI adoption.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENTO CURRICULUM -->
+        <section id="course">
+            <span class="section-label">02 // KNOWLEDGE BASE</span>
+            <h2 class="section-title">Technical Proficiency</h2>
+            
+            <div class="bento-grid">
+                <div class="bento-card wide">
+                    <div class="card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4a2 2 0 012-2h12a2 2 0 012 2v3M4 11h16m-10 8h4m-2 2v-3M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h4 class="card-title">LLM Architectures & RAG</h4>
+                    <p class="card-text">Deep understanding of LLM training, prompt engineering, and Retrieval-Augmented Generation for grounding AI outputs in verified research data.</p>
+                </div>
+
+                <div class="bento-card narrow">
+                    <div class="card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+                    </div>
+                    <h4 class="card-title">Data Viz</h4>
+                    <p class="card-text">Automating visualization using Julius and Code Interpreter.</p>
+                </div>
+
+                <div class="bento-card narrow">
+                    <div class="card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+                    </div>
+                    <h4 class="card-title">Agentic Flow</h4>
+                    <p class="card-text">Building autonomous agents using Botpress and Make.com.</p>
+                </div>
+
+                <div class="bento-card wide">
+                    <div class="card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <h4 class="card-title">AI for Communication</h4>
+                    <p class="card-text">Leveraging AI to synthesize complex research into accessible summaries and scientific figures for diverse stakeholders.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="portfolio">
+            <span class="section-label">03 // SELECTED WORKS</span>
+            <h2 class="section-title">Project Gallery</h2>
+            
+            <div class="gallery">
+                <div class="project-item">
+                    <span class="project-tag">WEB ARCHITECTURE</span>
+                    <h3 class="role-title">Research Hub Platform</h3>
+                    <p class="card-text">A centralized repository for academic findings built using AI-assisted HTML/CSS frameworks for high-speed dissemination.</p>
+                </div>
+
+                <div class="project-item">
+                    <span class="project-tag">AI AUTOMATION</span>
+                    <h3 class="role-title">Sentiment Analysis Engine</h3>
+                    <p class="card-text">Custom GPT workflow designed to process qualitative student feedback and generate automated reports for school boards.</p>
+                </div>
+
+                <div class="project-item">
+                    <span class="project-tag">AGENTIC UI</span>
+                    <h3 class="role-title">Admin Support Bot</h3>
+                    <p class="card-text">RAG-powered support agent built on Botpress to handle repetitive academic inquiries with 90% accuracy.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-logo">A.E.I.</div>
+            <div class="copyright">© 2024 // GRAPH_COHORT_PROD</div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Smooth Active State
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
