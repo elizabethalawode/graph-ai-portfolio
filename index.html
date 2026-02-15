@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/02/08/17/20260208173801-RED1VM0P.js" defer></script>
-    
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alawode Elizabeth Iyanuoluwa | AI Portfolio</title>
@@ -73,7 +68,7 @@
 
         .logo-box {
             width: 32px;
-            height: 32pxa;
+            height: 32px;
             background: var(--primary);
             border-radius: 6px;
             display: flex;
@@ -277,6 +272,30 @@
             cursor: pointer;
         }
 
+        /* --- CONSULTATION SECTION --- */
+        .form-container {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .form-wrapper {
+            width: 100%;
+            max-width: 640px;
+            position: relative;
+        }
+
+        /* Ensure iframe is responsive */
+        .form-wrapper iframe {
+            width: 100%;
+            max-width: 100%;
+        }
+
         /* --- FOOTER --- */
         footer {
             padding: 4rem 0;
@@ -315,6 +334,7 @@
             <a href="#about-me" class="nav-item">About Me</a>
             <a href="#about-course" class="nav-item">The Course</a>
             <a href="#submissions" class="nav-item">Submissions</a>
+            <a href="#contact" class="nav-item">Consultation</a>
         </nav>
     </header>
 
@@ -454,6 +474,23 @@
                     <span class="sub-link">Link coming soon</span>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- CONTACT FOR CONSULTATION -->
+        <section id="contact">
+            <span class="section-label">04 // Connect</span>
+            <h2 class="section-title">Contact for Consultation</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Interested in AI integration for education or research? Please fill out the form below to schedule a session.
+            </p>
+            <div class="form-container">
+                <div class="form-wrapper">
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSenacQbWltPLusW5vd0rktVODT1nfUTydL26Nhbf8aKbj6UIA/viewform?embedded=true"
+                        width="640" height="783" frameborder="0"
+                        marginheight="0" marginwidth="0">Loading…</iframe>
+                </div>
             </div>
         </section>
 
